@@ -20,12 +20,12 @@ public class Display {
         }
     }
 
-    //Function for display the bank
+    //Function to display the bank
     public void bank_sequence(ArrayList<String> sequences){
-        //display the sequences
+        //Display the sequences
         for (int i = 0; i < sequences.size(); i++) {
             System.out.printf(Const.white +">random sequence %d consisting of %d bases.\n\t", i + 1, sequences.size()); // Display sequence and base number
-            System.out.println(Const.white +sequences.get(i)); // display the DNA sequence
+            System.out.println(Const.white +sequences.get(i)); //Display the DNA sequence
         }
     }
 
