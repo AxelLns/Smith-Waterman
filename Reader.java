@@ -20,12 +20,6 @@ public class Reader {
         }
         // Close the scanner to free resources
 
-        //display the sequences
-        for (int i = 0; i < sequences.size(); i++) {
-            System.out.printf(Const.white +">random sequence %d consisting of %d bases.\n\t", i + 1, sequences.size()); // Display sequence and base number
-            System.out.println(Const.white +sequences.get(i)); // display the DNA sequence
-        }
-
         return sequences;
     }
 }
