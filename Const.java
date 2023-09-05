@@ -1,4 +1,4 @@
-//this class is for the initialisation of the different colors of the table
+//This class is for the initialisation of the different colors of the table
 
 public class Const {
     static final String white = "\u001B[37m";

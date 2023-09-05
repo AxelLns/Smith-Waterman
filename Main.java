@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        // Initialize an ArrayList to store DNA sequences
+        //Initialize an ArrayList to store DNA sequences
         ArrayList<String> sequences = new ArrayList<>();
 
-        // Read the DNA sequences from file
+        //Read the DNA sequences from file
         sequences = Reader.readFile();
 
-        // Ask the user which sequences to compare
+        //Ask the user which sequences to compare
         Scanner sc = new Scanner(System.in);
 
-        // Initialization of display class and display welcome screen
+        //Initialization of display class and display welcome screen
         Display affichage = new Display();
         affichage.welcome_screen();
 
@@ -28,16 +28,16 @@ public class Main {
         do{
             System.out.println("\nYou got different options:\n1- Use 2 sequences of the file\n2- Use 1 sequence from the file and 1 of your own creation\n3- Use 2 sequences from your creation\n4- See the file\n5- Exit");
             option=sc.nextLine();
-            //condition to leave the principal loop
+            //Condition to leave the principal loop
             if(Objects.equals(option, "5")){
                 exit=true;
             }
 
-            //Option of taking two sequences of the bank
+            //The option of taking two sequences of the bank
             if(Objects.equals(option, "1")){
                 System.out.print("Choose numbers you want:\n");
 
-                // Display the sequences to let choose the user
+                //Display the sequences to let choose the user
                 affichage.bank_sequence(sequences);
 
                 do{
@@ -48,16 +48,16 @@ public class Main {
                 }while(indexSequence1>10 && indexSequence2>10);
 
                 System.out.printf(Const.white + "\nYou chose sequences %s and %s\n\n", sequences.get(indexSequence1), sequences.get(indexSequence2));
-                // Run the Smith-Waterman algorithm on two sequences and print the result
+                //Run the Smith-Waterman algorithm on two sequences and print the result
                 int score=Algorithms.SmithWatermanAlgorithm(sequences.get(indexSequence1), sequences.get(indexSequence2));
                 System.out.println("The final score is "+score);
                 String trash=sc.nextLine();
             }
 
-            //Option of taking one sequence of the bank and create one
+            //The option of taking one sequence of the bank and create one
             if(Objects.equals(option,"2")){
 
-                // Display the sequences
+                //Display the sequences
                 affichage.bank_sequence(sequences);
 
                 System.out.print("Choose the sequence you want from the file:\n");
@@ -67,49 +67,86 @@ public class Main {
                 }while(indexSequence1>10);
 
                 //Creation of the user's sequence
-                System.out.print(Const.white + "Please write your own second sequence: \n");
+                System.out.print(Const.white + "Please write your own second sequence \n");
                 String trash = sc.nextLine();
-                String newSequence = sc.nextLine();
+                String newSequence;
+                int temp=0;
+                do{ //Do the security for the DNA letters
+                    System.out.println("The sequence is only available with : A,C,G,T");
+                    newSequence=sc.nextLine();
+                    temp=sequence(newSequence);
+                }while(temp!=1);
+
                 System.out.printf(Const.white + "\nYou chose sequences %s and %s\n\n", sequences.get(indexSequence1), newSequence);
                 int score=Algorithms.SmithWatermanAlgorithm(sequences.get(indexSequence1), newSequence);
                 System.out.println("The final score is "+score);
             }
 
-            //Option of create two sequences
+            //The option of creating two sequences
             if(Objects.equals(option,"3")){
 
                 System.out.print(Const.white + "Please write your own first sequence: \n");
-                String newSequence1 = sc.nextLine();
+                String newSequence1;
+                int temp=0;
+                do{
+                    System.out.println("The sequence is only available with : A,C,G,T");
+                    newSequence1=sc.nextLine();
+                    temp=sequence(newSequence1);
+                }while(temp!=1);
+
                 System.out.print("Please write your own second sequence :\n");
                 String newSequence2 = sc.nextLine();
+                temp=0;
+                do{
+                    System.out.println("The sequence is only available with : A,C,G,T");
+                    newSequence2=sc.nextLine();
+                    temp=sequence(newSequence2);
+                }while(temp!=1);
+
                 System.out.printf(Const.white + "\nYou chose sequences %s and %s\n\n", newSequence1, newSequence2);
                 int score=Algorithms.SmithWatermanAlgorithm(newSequence1, newSequence2);
                 System.out.println("The final score is "+score);
             }
 
-            //Option of just display sequences
+            //The option of just display sequences
             if(Objects.equals(option,"4")){
                 affichage.bank_sequence(sequences);
             }
-
         }while (exit!=true);
         System.out.println("Thank you see you later");
         sc.close();
     }
 
-    //This function get the index of the sequence
+    private static int sequence(String newSequence){
+        int pass=0;
+            for(int i=0;i<newSequence.length();i++){
+                if (newSequence.charAt(i)=='A' || newSequence.charAt(i)=='C' || newSequence.charAt(i)=='G' || newSequence.charAt(i)=='T'){
+                    pass+=1;
+                }
+                else{
+                    pass=0;
+                }
+            }
+        if (pass==newSequence.length()){
+            return 1;
+        }
+        return 0;
+    }
+
+    //This function gets the index of the sequence
     private static int getIndexSequence(ArrayList<String> sequences, Scanner sc, int indexSequence) {
         do {
             if (sc.hasNextInt()) {
-                indexSequence = sc.nextInt() - 1;  // Convert from 1-based to 0-based index. Due to the start at 0 in java in an array
+                indexSequence = sc.nextInt() - 1;  //Convert from 1-based to 0-based index. Due to the start at 0 in java in an array
                 if ((indexSequence < 0 || indexSequence >= sequences.size()) && indexSequence != 10) {
                     System.out.printf(Const.white + "Please enter an int from %d to %d\n", 1, sequences.size());
                 }
             } else {
                 System.out.printf(Const.white + "Please enter an int from %d to %d\n", 1, sequences.size());
-                sc.next();  // Clear the scanner buffer
+                sc.next();  //Clear the scanner buffer
             }
         } while ((indexSequence < 0 || indexSequence >= sequences.size()) && indexSequence != 10);
         return indexSequence;
     }
 }
+
