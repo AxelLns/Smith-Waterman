@@ -46,15 +46,17 @@ public class Main {
                 }while(indexSequence1>10 && indexSequence2>10);
                 System.out.printf(Const.white + "\nYou chose sequences %s and %s\n\n", sequences.get(indexSequence1), sequences.get(indexSequence2));
                 // Run the Smith-Waterman algorithm on two sequences and print the result
-                System.out.printf(Const.white + "%d", Algorithms.SmithWatermanAlgorithm(sequences.get(indexSequence1), sequences.get(indexSequence2)));
+                int score=Algorithms.SmithWatermanAlgorithm(sequences.get(indexSequence1), sequences.get(indexSequence2));
+                System.out.println("The final score is "+score);
                 String trash=sc.nextLine();
             }
 
             if(Objects.equals(option,"2")){
-                System.out.print("Choose the sequence you want from the file:\n");
 
                 // Display the sequences
                 affichage.bank_sequence(sequences);
+
+                System.out.print("Choose the sequence you want from the file:\n");
 
                 do{
                     indexSequence1 = getIndexSequence(sequences, sc, indexSequence1);
@@ -64,7 +66,8 @@ public class Main {
                 String trash = sc.nextLine();
                 String newSequence = sc.nextLine();
                 System.out.printf(Const.white + "\nYou chose sequences %s and %s\n\n", sequences.get(indexSequence1), newSequence);
-                System.out.printf(Const.white + "%d", Algorithms.SmithWatermanAlgorithm(sequences.get(indexSequence1), newSequence));
+                int score=Algorithms.SmithWatermanAlgorithm(sequences.get(indexSequence1), newSequence);
+                System.out.println("The final score is "+score);
             }
 
             if(Objects.equals(option,"3")){
@@ -74,19 +77,13 @@ public class Main {
                 System.out.print("Please write your own second sequence :\n");
                 String newSequence2 = sc.nextLine();
                 System.out.printf(Const.white + "\nYou chose sequences %s and %s\n\n", newSequence1, newSequence2);
-                System.out.printf(Const.white + "%d", Algorithms.SmithWatermanAlgorithm(newSequence1, newSequence2));
-
+                int score=Algorithms.SmithWatermanAlgorithm(newSequence1, newSequence2);
+                System.out.println("The final score is "+score);
             }
 
             if(Objects.equals(option,"4")){
-                
                 // Display the sequences
                 affichage.bank_sequence(sequences);
-
-                ///////////////////////////////////////////////////////////////////////////////////
-                //bloquer les minuscules et les lettres qui ne sont pas de la DNA
-                ///////////////////////////////////////////////////////////////////////////////////
-
             }
 
         }while (exit!=true);

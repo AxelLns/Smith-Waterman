@@ -51,7 +51,6 @@ public class Algorithms {
             }
             System.out.print(Const.white + "\n");
         }
-
         return max; // Return maximum score
     }
 }
