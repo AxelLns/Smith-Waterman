@@ -22,9 +22,12 @@ public class Display {
 
     //Function for display the bank
     public void bank_sequence(ArrayList<String> sequences){
+        String[] little_seq;
+
         //display the sequences
         for (int i = 0; i < sequences.size(); i++) {
-            System.out.printf(Const.white +">random sequence %d consisting of %d bases.\n\t", i + 1, sequences.size()); // Display sequence and base number
+            little_seq = sequences.get(i).split("");
+            System.out.printf(Const.white +">random sequence %d consisting of %d bases.\n\t", i + 1, little_seq.length); // Display sequence and base number
             System.out.println(Const.white +sequences.get(i)); // display the DNA sequence
         }
     }
