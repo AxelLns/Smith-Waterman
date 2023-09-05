@@ -15,10 +15,10 @@ public class Reader {
             while (sc.hasNextLine()) { // Verify if "sc" contain a line of data
                 sequences.add(sc.nextLine()); // Add each line to the ArrayList
             }
+
         } catch (FileNotFoundException e) {
             System.out.println(Const.white +"File not found"); // Handle "file not found" exception
         }
-        // Close the scanner to free resources
 
         return sequences;
     }

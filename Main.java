@@ -23,19 +23,21 @@ public class Main {
         String option;
         int indexSequence1 = -1, indexSequence2 = -1;
 
+        //Start the principal loop
         System.out.println("\nWhen you want to choose a option please put the number associate");
         do{
             System.out.println("\nYou got different options:\n1- Use 2 sequences of the file\n2- Use 1 sequence from the file and 1 of your own creation\n3- Use 2 sequences from your creation\n4- See the file\n5- Exit");
             option=sc.nextLine();
-
+            //condition to leave the principal loop
             if(Objects.equals(option, "5")){
                 exit=true;
             }
 
+            //Option of taking two sequences of the bank
             if(Objects.equals(option, "1")){
                 System.out.print("Choose numbers you want:\n");
 
-                // Display the sequences
+                // Display the sequences to let choose the user
                 affichage.bank_sequence(sequences);
 
                 do{
@@ -44,6 +46,7 @@ public class Main {
                     System.out.print("Second one:\n");
                     indexSequence2 = getIndexSequence(sequences, sc, indexSequence2);
                 }while(indexSequence1>10 && indexSequence2>10);
+
                 System.out.printf(Const.white + "\nYou chose sequences %s and %s\n\n", sequences.get(indexSequence1), sequences.get(indexSequence2));
                 // Run the Smith-Waterman algorithm on two sequences and print the result
                 int score=Algorithms.SmithWatermanAlgorithm(sequences.get(indexSequence1), sequences.get(indexSequence2));
@@ -51,17 +54,19 @@ public class Main {
                 String trash=sc.nextLine();
             }
 
+            //Option of taking one sequence of the bank and create one
             if(Objects.equals(option,"2")){
 
                 // Display the sequences
                 affichage.bank_sequence(sequences);
 
                 System.out.print("Choose the sequence you want from the file:\n");
-
+                //Choice of the one of the bank
                 do{
                     indexSequence1 = getIndexSequence(sequences, sc, indexSequence1);
                 }while(indexSequence1>10);
 
+                //Creation of the user's sequence
                 System.out.print(Const.white + "Please write your own second sequence: \n");
                 String trash = sc.nextLine();
                 String newSequence = sc.nextLine();
@@ -70,6 +75,7 @@ public class Main {
                 System.out.println("The final score is "+score);
             }
 
+            //Option of create two sequences
             if(Objects.equals(option,"3")){
 
                 System.out.print(Const.white + "Please write your own first sequence: \n");
@@ -81,8 +87,8 @@ public class Main {
                 System.out.println("The final score is "+score);
             }
 
+            //Option of just display sequences
             if(Objects.equals(option,"4")){
-                // Display the sequences
                 affichage.bank_sequence(sequences);
             }
 
@@ -91,7 +97,7 @@ public class Main {
         sc.close();
     }
 
-
+    //This function get the index of the sequence
     private static int getIndexSequence(ArrayList<String> sequences, Scanner sc, int indexSequence) {
         do {
             if (sc.hasNextInt()) {
