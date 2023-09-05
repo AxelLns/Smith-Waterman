@@ -14,6 +14,10 @@ public class Main {
         // Ask the user which sequences to compare
         Scanner sc = new Scanner(System.in);
 
+        // Initialization of display class and display welcome screen
+        Display affichage = new Display();
+        affichage.welcome_screen();
+
         //Initialisation of the menu
         boolean exit=false;
         String option;
@@ -31,7 +35,8 @@ public class Main {
             if(Objects.equals(option, "1")){
                 System.out.print("Choose numbers you want:\n");
 
-                //print le fichier
+                // Display the sequences
+                affichage.bank_sequence(sequences);
 
                 do{
                     System.out.print("First one:\n");
@@ -48,7 +53,8 @@ public class Main {
             if(Objects.equals(option,"2")){
                 System.out.print("Choose the sequence you want from the file:\n");
 
-                //print le fichier
+                // Display the sequences
+                affichage.bank_sequence(sequences);
 
                 do{
                     indexSequence1 = getIndexSequence(sequences, sc, indexSequence1);
@@ -73,8 +79,10 @@ public class Main {
             }
 
             if(Objects.equals(option,"4")){
+                
+                // Display the sequences
+                affichage.bank_sequence(sequences);
 
-                //print the file
                 ///////////////////////////////////////////////////////////////////////////////////
                 //bloquer les minuscules et les lettres qui ne sont pas de la DNA
                 ///////////////////////////////////////////////////////////////////////////////////
