@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // Initialize an ArrayList to store DNA sequences
         ArrayList<String> sequences = new ArrayList<>();
 
@@ -90,7 +90,7 @@ public class Main {
     private static int getIndexSequence(ArrayList<String> sequences, Scanner sc, int indexSequence) {
         do {
             if (sc.hasNextInt()) {
-                indexSequence = sc.nextInt() - 1;  // Convert from 1-based to 0-based index
+                indexSequence = sc.nextInt() - 1;  // Convert from 1-based to 0-based index. Due to the start at 0 in java in an array
                 if ((indexSequence < 0 || indexSequence >= sequences.size()) && indexSequence != 10) {
                     System.out.printf(Const.white + "Please enter an int from %d to %d\n", 1, sequences.size());
                 }
