@@ -13,7 +13,7 @@ public class Display {
 
     //Function to simulate of waiting and display a message
     public void scanning() throws InterruptedException {
-        System.out.print("DNA scanning, please wait");
+        System.out.print("DNA scanning, please wait professor");
         for (int i = 0; i < 4; i++){
             System.out.print(".");
             TimeUnit.SECONDS.sleep(1);

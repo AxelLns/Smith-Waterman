@@ -54,6 +54,8 @@ public class Main {
                     indexSequence2 = getIndexSequence(sequences, sc, indexSequence2);
                 }while(indexSequence1>10 && indexSequence2>10);
 
+                //short waiting screen to make a little suspense
+                affichage.scanning();
                 System.out.printf(Const.white + "\nYou chose sequences %s and %s\n\n", sequences.get(indexSequence1), sequences.get(indexSequence2));
                 //Run the Smith-Waterman algorithm on two sequences and print the result
                 int score=Algorithms.SmithWatermanAlgorithm(sequences.get(indexSequence1), sequences.get(indexSequence2));
@@ -83,6 +85,8 @@ public class Main {
                     temp=sequence(newSequence);
                 }while(temp!=1);
 
+                //short waiting screen to make a little suspense
+                affichage.scanning();
                 System.out.printf(Const.white + "\nYou chose sequences %s and %s\n\n", sequences.get(indexSequence1), newSequence);
                 int score=Algorithms.SmithWatermanAlgorithm(sequences.get(indexSequence1), newSequence);
                 System.out.println("The final score is "+score);
@@ -107,6 +111,8 @@ public class Main {
                     temp=sequence(newSequence2);
                 }while(temp!=1);
 
+                //short waiting screen to make a little suspense
+                affichage.scanning();
                 System.out.printf(Const.white + "\nYou chose sequences %s and %s\n\n", newSequence1, newSequence2);
                 int score=Algorithms.SmithWatermanAlgorithm(newSequence1, newSequence2);
                 System.out.println("The final score is "+score);
