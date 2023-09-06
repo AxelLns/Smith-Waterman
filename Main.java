@@ -74,12 +74,11 @@ public class Main {
                 }while(indexSequence1>10);
 
                 //Creation of the user's sequence
-                System.out.print(Const.white + "Please write your own second sequence \n");
                 String trash = sc.nextLine();
                 String newSequence;
                 int temp=0;
                 do{ //Do the security for the DNA letters
-                    System.out.println("The sequence is only available with : A,C,G,T");
+                    System.out.printf(Const.white +"Please write your own second sequence (is only available with : A,C,G,T)\n");
                     newSequence=sc.nextLine();
                     temp=sequence(newSequence);
                 }while(temp!=1);
@@ -92,20 +91,18 @@ public class Main {
             //The option of creating two sequences
             if(Objects.equals(option,"3")){
 
-                System.out.print(Const.white + "Please write your own first sequence: \n");
                 String newSequence1;
                 int temp=0;
                 do{
-                    System.out.println("The sequence is only available with : A,C,G,T");
+                    System.out.printf(Const.white +"Please write your own first sequence (is only available with : A,C,G,T)\n");
                     newSequence1=sc.nextLine();
                     temp=sequence(newSequence1);
                 }while(temp!=1);
 
-                System.out.print("Please write your own second sequence :\n");
-                String newSequence2 = sc.nextLine();
+                String newSequence2;
                 temp=0;
                 do{
-                    System.out.println("The sequence is only available with : A,C,G,T");
+                    System.out.printf(Const.white +"Please write your own second sequence (is only available with : A,C,G,T)\n");
                     newSequence2=sc.nextLine();
                     temp=sequence(newSequence2);
                 }while(temp!=1);
@@ -121,15 +118,17 @@ public class Main {
             }
 
             if (Objects.equals(option,"5")){
-                System.out.print(Const.white + "Please write your own sequence: \n");
-                String newSequence1 = sc.nextLine();
+                String newSequence1;
                 int temp=0;
                 do{
-                    System.out.println("The sequence is only available with : A,C,G,T");
+                    System.out.printf(Const.white + "Please write your own sequence (is only available with : A,C,G,T)\n");
                     newSequence1=sc.nextLine();
                     temp=sequence(newSequence1);
                 }while(temp!=1);
                 Write.write(newSequence1);
+
+                //Read again the DNA sequences from file with the new sequence added
+                sequences = Reader.readFile();
             }
 
         }while (exit!=true);
