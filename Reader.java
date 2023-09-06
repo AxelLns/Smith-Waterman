@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Reader {
     // A method to read DNA sequences from a file
     public static ArrayList<String> readFile() {
-        String path = "./aDNA_data.txt"; // Path of the document .txt who stock the DNA sequences
+        String path = "./DNA_data.txt"; // Path of the document .txt who stock the DNA sequences
         File file = new File(path);
         ArrayList<String> sequences = new ArrayList<>(); // Initialization of the object "sequences" to be a resizable
                                                          // array

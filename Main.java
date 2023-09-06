@@ -33,7 +33,7 @@ public class Main {
                 System.out.print("2- Use 1 sequence from the file and 1 of your own creation\n");
                 System.out.print(Const.white + "3- Use 2 sequences from your creation\n");
                 System.out.print(Const.black + "4- See the file\n5- Add a sequence to the file\n");
-                System.out.print(Const.white + "6- Exit\n");
+                System.out.print(Const.white + "6- Exit\n>");
                 if (sc.hasNextInt()) {
                     option = sc.nextLine();
                     if (Objects.equals(option, "1") || Objects.equals(option, "2") || Objects.equals(option, "4")
@@ -42,16 +42,16 @@ public class Main {
                         TimeUnit.SECONDS.sleep(2);
                     } else if (Objects.equals(option, "3") || Objects.equals(option, "6")) {
                     } else {
-                        System.out.print(Const.white + "Please enter an int from 1 to 6\n");
+                        System.out.print(Const.white + "Please enter an int from 1 to 6\n>");
                         sc.next(); // Clear the scanner buffer
                     }
                 } else {
-                    System.out.print(Const.white + "Please enter an int from 1 to 6\n");
+                    System.out.print(Const.white + "Please enter an int from 1 to 6\n>");
                     sc.next(); // Clear the scanner buffer
                 }
             } else {
-                System.out.println(
-                        "\nYou got different options:\n1- Use 2 sequences of the file\n2- Use 1 sequence from the file and 1 of your own creation\n3- Use 2 sequences from your creation\n4- See the file\n5- Add a sequence to the file\n6- Exit\n");
+                System.out.print(
+                        "\nYou got different options:\n1- Use 2 sequences of the file\n2- Use 1 sequence from the file and 1 of your own creation\n3- Use 2 sequences from your creation\n4- See the file\n5- Add a sequence to the file\n6- Exit\n\n>");
                 option = sc.nextLine();
             }
 
@@ -70,9 +70,9 @@ public class Main {
                 Display.bank_sequence(sequences);
 
                 do {
-                    System.out.print("First one:\n");
+                    System.out.print("First one:\n>");
                     indexSequence1 = getIndexSequence(sequences, sc, indexSequence1);
-                    System.out.print("Second one:\n");
+                    System.out.print("Second one:\n>");
                     indexSequence2 = getIndexSequence(sequences, sc, indexSequence2);
                 } while (indexSequence1 > 10 && indexSequence2 > 10);
                 Display.scanning();
@@ -96,7 +96,7 @@ public class Main {
                 // Display the sequences
                 Display.bank_sequence(sequences);
 
-                System.out.print("Choose the sequence you want from the file:\n");
+                System.out.print("Choose the sequence you want from the file:\n>");
                 // Choice of the one of the bank
                 do {
                     indexSequence1 = getIndexSequence(sequences, sc, indexSequence1);
@@ -108,7 +108,8 @@ public class Main {
                 int temp = 0;
                 do { // Do the security for the DNA letters
                     System.out.printf(
-                            Const.white + "Please write your own second sequence (is only available with : A,C,G,T)\n");
+                            Const.white
+                                    + "Please write your own second sequence (is only available with : A,C,G,T)\n>");
                     newSequence = sc.nextLine();
                     temp = sequence(newSequence);
                 } while (temp != 1);
@@ -132,7 +133,7 @@ public class Main {
                 int temp = 0;
                 do {
                     System.out.printf(
-                            Const.white + "Please write your own first sequence (is only available with : A,C,G,T)\n");
+                            Const.white + "Please write your own first sequence (is only available with : A,C,G,T)\n>");
                     newSequence1 = sc.nextLine();
                     temp = sequence(newSequence1);
                 } while (temp != 1);
@@ -141,7 +142,8 @@ public class Main {
                 temp = 0;
                 do {
                     System.out.printf(
-                            Const.white + "Please write your own second sequence (is only available with : A,C,G,T)\n");
+                            Const.white
+                                    + "Please write your own second sequence (is only available with : A,C,G,T)\n>");
                     newSequence2 = sc.nextLine();
                     temp = sequence(newSequence2);
                 } while (temp != 1);
@@ -167,7 +169,7 @@ public class Main {
                 int temp = 0;
                 do {
                     System.out.printf(
-                            Const.white + "Please write your own sequence (is only available with : A,C,G,T)\n");
+                            Const.white + "Please write your own sequence (is only available with : A,C,G,T)\n>");
                     newSequence1 = sc.nextLine();
                     temp = sequence(newSequence1);
                 } while (temp != 1);
@@ -205,10 +207,10 @@ public class Main {
                 indexSequence = sc.nextInt() - 1; // Convert from 1-based to 0-based index. Due to the start at 0 in
                                                   // java in an array
                 if ((indexSequence < 0 || indexSequence >= sequences.size()) && indexSequence != 10) {
-                    System.out.printf(Const.white + "Please enter an int from %d to %d\n", 1, sequences.size());
+                    System.out.printf(Const.white + "Please enter an int from %d to %d\n>", 1, sequences.size());
                 }
             } else {
-                System.out.printf(Const.white + "Please enter an int from %d to %d\n", 1, sequences.size());
+                System.out.printf(Const.white + "Please enter an int from %d to %d\n>", 1, sequences.size());
                 sc.next(); // Clear the scanner buffer
             }
         } while ((indexSequence < 0 || indexSequence >= sequences.size()) && indexSequence != 10);
