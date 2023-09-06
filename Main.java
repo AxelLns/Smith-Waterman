@@ -26,10 +26,17 @@ public class Main {
         //Start the principal loop
         System.out.println("\nWhen you want to choose a option please put the number associate");
         do{
-            System.out.println("\nYou got different options:\n1- Use 2 sequences of the file\n2- Use 1 sequence from the file and 1 of your own creation\n3- Use 2 sequences from your creation\n4- See the file\n5- Exit");
+            System.out.println("\nYou got different options:\n" +
+                    "1- Use 2 sequences of the file\n" +
+                    "2- Use 1 sequence from the file and 1 of your own creation\n" +
+                    "3- Use 2 sequences from your creation\n" +
+                    "4- See the file\n" +
+                    "5- Add a sequence of DNA to the bank\n" +
+                    "6- Exit");
             option=sc.nextLine();
-            //Condition to leave the principal loop
-            if(Objects.equals(option, "5")){
+
+            //condition to leave the principal loop
+            if(Objects.equals(option, "6")){
                 exit=true;
             }
 
@@ -112,6 +119,19 @@ public class Main {
             if(Objects.equals(option,"4")){
                 affichage.bank_sequence(sequences);
             }
+
+            if (Objects.equals(option,"5")){
+                System.out.print(Const.white + "Please write your own sequence: \n");
+                String newSequence1 = sc.nextLine();
+                int temp=0;
+                do{
+                    System.out.println("The sequence is only available with : A,C,G,T");
+                    newSequence1=sc.nextLine();
+                    temp=sequence(newSequence1);
+                }while(temp!=1);
+                Write.write(newSequence1);
+            }
+
         }while (exit!=true);
         System.out.println("Thank you see you later");
         sc.close();
