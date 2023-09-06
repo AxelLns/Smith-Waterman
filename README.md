@@ -13,3 +13,6 @@ Algorithm that compares 2 DNA sequences by applying the Smith-Waterman algorithm
 [Axel LOONES](https://github.com/AxelLns)\
 [Thibaut MENIN](https://github.com/Pulsar94)\
 [Marc ROUGAGNOU](https://github.com/MarcEfrei)
+
+Run the main function in Main.java to start the program in the terminal
+Run the main function in GUI.java to start the program with the Graphic User Interface
