@@ -1,8 +1,24 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class Display {
-    public void welcome_screen(){
+    public static void waiting() {
+        System.out.println("\nPress enter to continue...");
+        try {
+            System.in.read();
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        clear();
+    }
+
+    public static void clear(){
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (IOException | InterruptedException e) {
+            System.out.println(e);
+        }
         System.out.println("\n██████╗░███╗░░██╗░█████╗░       ░█████╗░░█████╗░███╗░░░███╗██████╗░░█████╗░██████╗░░█████╗░████████╗░█████╗░██████╗░");
         System.out.println("██╔══██╗████╗░██║██╔══██╗       ██╔══██╗██╔══██╗████╗░████║██╔══██╗██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██╔══██╗");
         System.out.println("██║░░██║██╔██╗██║███████║       ██║░░╚═╝██║░░██║██╔████╔██║██████╔╝███████║██████╔╝███████║░░░██║░░░██║░░██║██████╔╝");
@@ -12,7 +28,7 @@ public class Display {
     }
 
     //Function to simulate of waiting and display a message
-    public void scanning() throws InterruptedException {
+    public static void scanning() throws InterruptedException {
         System.out.print("DNA scanning, please wait professor");
         for (int i = 0; i < 4; i++){
             System.out.print(".");
@@ -21,7 +37,7 @@ public class Display {
     }
 
     //Function for display the bank
-    public void bank_sequence(ArrayList<String> sequences){
+    public static void bank_sequence(ArrayList<String> sequences){
         String[] little_seq;
 
         //display the sequences
