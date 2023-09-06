@@ -2,15 +2,8 @@ public class Algorithms {
     // Smith-Waterman algorithm
     public static int SmithWatermanAlgorithm(String sequence1, String sequence2, int[][] matrix, int match,
             int mismatch, int gap) {
-        // Scoring system
-        // int match = 1;
-        // int mismatch = 0;
-        // int gap = -2;
 
         int max = 0; // Variable to hold the maximum score
-
-        // Initialize the matrix
-        // int[][] matrix = new int[sequence1.length() + 1][sequence2.length() + 1];
 
         // Initialize first row and first column with 0
         for (int i = 0; i < sequence1.length() + 1; i++)

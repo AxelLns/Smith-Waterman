@@ -26,6 +26,7 @@ public class Main {
         // Start the principal loop
         System.out.println("\nWhen you want to choose an option please put the number associate");
         do {
+            option = "";
             if (sequences.size() == 0) {
                 System.out.print("You got different options:\n");
                 System.out.print(Const.black);
@@ -43,11 +44,9 @@ public class Main {
                     } else if (Objects.equals(option, "3") || Objects.equals(option, "6")) {
                     } else {
                         System.out.print(Const.white + "Please enter an int from 1 to 6\n>");
-                        sc.next(); // Clear the scanner buffer
                     }
                 } else {
                     System.out.print(Const.white + "Please enter an int from 1 to 6\n>");
-                    sc.next(); // Clear the scanner buffer
                 }
             } else {
                 System.out.print(
