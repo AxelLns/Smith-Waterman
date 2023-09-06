@@ -15,7 +15,7 @@ public class Main {
         // Ask the user which sequences to compare
         Scanner sc = new Scanner(System.in);
 
-        // Initialization of display class and display welcome screen
+        // Display welcome screen
         Display.clear();
 
         // Initialisation of the menu
@@ -33,7 +33,7 @@ public class Main {
                 System.out.print("2- Use 1 sequence from the file and 1 of your own creation\n");
                 System.out.print(Const.white + "3- Use 2 sequences from your creation\n");
                 System.out.print(Const.black + "4- See the file\n5- Add a sequence to the file\n");
-                System.out.print(Const.white + "6- Exit\n>");
+                System.out.print(Const.white + "6- Exit\n\n>");
                 if (sc.hasNextInt()) {
                     option = sc.nextLine();
                     if (Objects.equals(option, "1") || Objects.equals(option, "2") || Objects.equals(option, "4")
@@ -127,7 +127,7 @@ public class Main {
             }
 
             // The option of creating two sequences
-            if (Objects.equals(option, "3") && sequences.size() != 0) {
+            if (Objects.equals(option, "3")) {
 
                 String newSequence1;
                 int temp = 0;
